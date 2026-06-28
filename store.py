@@ -4,7 +4,7 @@ The README documents these functions; code and docs start in sync.
 """
 
 
-def apply_discount(price, percent):
+def apply_discount(price, percent, min_price):
     """Reduce ``price`` by ``percent`` percent and return the new price.
 
     Args:
@@ -14,7 +14,8 @@ def apply_discount(price, percent):
     Returns:
         The discounted price as a float.
     """
-    return price * (1 - percent / 100)
+    discounted = price * (1 - percent / 100)
+    return max(discounted, min_price)
 
 
 def format_price(amount, currency="USD"):
